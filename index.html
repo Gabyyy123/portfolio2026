@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>John Lloyd Gabrillo | Aspiring Cybersecurity Professional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef2f6;--surface:#fff;--ink:#12203a;--muted:#4d5b73;--line:#d3dbe6;
+  --accent:#b86e00;--accent-bg:#f6a800;--accent-ink:#1a1200;--term:#0f1b2d;--term-ink:#d6e2f3;--tl:34%;
+  --sans:'Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0c1626;--surface:#13223a;--ink:#e8eef8;--muted:#9fb0c8;--line:#24385a;
+  --accent:#f6a800;--accent-bg:#f6a800;--term:#08111f;--tl:72%;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1626;--surface:#13223a;--ink:#e8eef8;--muted:#9fb0c8;--line:#24385a;
+  --accent:#f6a800;--accent-bg:#f6a800;--term:#08111f;--tl:72%;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent-bg);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1080px,100% - 2.5rem);margin-inline:auto}
+section{padding:clamp(3.5rem,9vw,6.5rem) 0}
+h1,h2,h3{font-weight:800;line-height:1.08;letter-spacing:-.02em;margin:0}
+h2{font-size:clamp(1.9rem,4.5vw,2.8rem);margin-bottom:1.5rem}
+p{margin:0 0 1rem;max-width:62ch}
+
+/* progress + header */
+#bar{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:3px;width:100%;background:var(--accent-bg);transform:scaleX(0);transform-origin:left;z-index:70}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:1rem;height:60px}
+.brand{font-weight:800;text-decoration:none;white-space:nowrap}
+.links{display:flex;gap:.25rem;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.links a{padding:.45rem .8rem;border-radius:999px;text-decoration:none;font-size:.95rem;color:var(--muted);white-space:nowrap;transition:background .2s,color .2s}
+.links a:hover,.links a.on{background:var(--surface);color:var(--ink)}
+.links a.on{box-shadow:inset 0 0 0 1px var(--line)}
+#theme{border:1px solid var(--line);background:var(--surface);color:var(--ink);width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1rem;flex:none}
+@media(max-width:560px){.brand{display:none}.links{margin-left:0}}
+
+/* hero */
+.hero{display:grid;gap:2.5rem;align-items:center;padding-top:clamp(2.5rem,7vw,5rem)}
+@media(min-width:900px){.hero{grid-template-columns:1.1fr 1fr}}
+.hero h1{font-size:clamp(2.6rem,8.5vw,5.2rem)}
+.hero .role{font-size:clamp(1.15rem,2.6vw,1.45rem);color:var(--muted);margin:1.2rem 0 1.8rem}
+.btns{display:flex;flex-wrap:wrap;gap:.8rem}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:10px;font-weight:600;text-decoration:none;border:2px solid var(--ink);transition:transform .2s,background .2s}
+.btn.pri{background:var(--accent-bg);border-color:var(--accent-bg);color:var(--accent-ink)}
+.btn:hover{transform:translateY(-3px)}
+.term{background:var(--term);color:var(--term-ink);border-radius:14px;border:1px solid var(--line);overflow:hidden;font:400 .86rem/1.7 var(--mono);box-shadow:0 18px 40px -22px rgba(8,17,31,.7)}
+.term .tb{display:flex;gap:.4rem;padding:.7rem 1rem;background:rgba(255,255,255,.06)}
+.term .tb i{width:11px;height:11px;border-radius:50%;background:#51627f}
+.term pre{margin:0;padding:1rem 1.1rem 1.2rem;min-height:15.5em;white-space:pre-wrap;word-break:break-word;font:inherit}
+.p{color:#f6a800}.ok{color:#6fe3a1}.dim{color:#8396b3}
+.caret{display:inline-block;width:.55em;height:1.05em;background:#f6a800;vertical-align:text-bottom;animation:bl 1s steps(2) infinite}
+@keyframes bl{50%{opacity:0}}
+
+/* about */
+.about{display:grid;gap:2rem}
+@media(min-width:800px){.about{grid-template-columns:1.3fr 1fr}}
+.facts{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.4rem 1.5rem;margin:0}
+.facts dt{font-weight:600;font-size:.95rem;color:var(--accent)}
+.facts dd{margin:0 0 1rem}
+.facts dd:last-child{margin:0}
+
+/* skills */
+.skillgrid{display:grid;gap:.9rem;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.sk{display:flex;align-items:center;gap:.9rem;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.85rem 1rem;transition:transform .2s,border-color .2s}
+.sk:hover{transform:translateY(-3px);border-color:var(--accent-bg)}
+.ic{flex:none;width:46px;height:46px;border-radius:11px;display:grid;place-items:center;font:700 .88rem var(--mono);
+  background:hsl(var(--h) 65% 50%/.17);color:hsl(var(--h) 75% var(--tl))}
+.sk b{display:block;line-height:1.2}
+.sk small{color:var(--muted);font-size:.85rem}
+.note{color:var(--muted);margin-top:1.5rem}
+
+/* projects */
+.pgrid{display:grid;gap:1.4rem}
+@media(min-width:760px){.pgrid{grid-template-columns:1fr 1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-5px);box-shadow:0 20px 36px -24px rgba(8,17,31,.55)}
+/* To use a real screenshot, replace the .shot div with: <img class="shot" src="images/your-file.png" alt="Screenshot of ..."> */
+.shot{aspect-ratio:16/8;background:var(--term);color:var(--term-ink);padding:1rem 1.2rem;font:400 .8rem/1.6 var(--mono);overflow:hidden}
+.card .body{padding:1.3rem 1.4rem 1.5rem;display:flex;flex-direction:column;flex:1}
+.tag{align-self:flex-start;font-size:.8rem;font-weight:600;padding:.15rem .65rem;border-radius:999px;background:var(--accent-bg);color:var(--accent-ink);margin-bottom:.7rem}
+.card h3{font-size:1.35rem;margin-bottom:.6rem}
+.card p{font-size:.98rem;color:var(--muted);margin-bottom:.7rem}
+.card p b{color:var(--ink)}
+.card .btn{margin-top:auto;align-self:flex-start;padding:.55rem 1.1rem;font-size:.95rem}
+
+/* contact */
+.contact{background:var(--term);color:var(--term-ink);border-radius:22px;padding:clamp(2rem,6vw,3.5rem)}
+.contact h2{color:#fff}
+.contact p{color:#b7c6dd}
+.contact .btn{border-color:#d6e2f3;color:#d6e2f3;display:inline-flex;align-items:center;gap:.6rem}
+.contact .btn svg{width:20px;height:20px;fill:currentColor;flex:none}
+.contact .mail{margin-top:1.2rem;font-size:.95rem;color:#b7c6dd}
+.contact .btn.pri{border-color:var(--accent-bg);color:var(--accent-ink)}
+footer{padding:2rem 0 3rem;color:var(--muted);font-size:.92rem;text-align:center}
+
+/* scroll reveal */
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}.js .rv{opacity:1;transform:none;transition:none}.caret{animation:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home">John Lloyd Gabrillo</a>
+    <nav class="links" aria-label="Main">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+    </nav>
+    <button id="theme" type="button" aria-label="Switch light or dark theme">◐</button>
+  </div>
+</header>
+
+<main>
+<section id="home" style="padding-top:0">
+  <div class="wrap hero">
+    <div>
+      <h1>John Lloyd Gabrillo</h1>
+      <p class="role">Student learning to become a cybersecurity professional. I like finding out how networks work and how to protect them.</p>
+      <div class="btns">
+        <a class="btn pri" href="#projects">See my projects</a>
+        <a class="btn" href="#contact">Contact me</a>
+      </div>
+    </div>
+    <div class="term" aria-label="Terminal animation introducing John Lloyd">
+      <div class="tb"><i></i><i></i><i></i></div>
+      <pre id="tty" aria-live="off"></pre>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div class="rv">
+      <h2>About me</h2>
+      <p>I’m a student who wants to build a career in cybersecurity. I started with web development and networking classes, then got curious about how systems break and how to make them harder to break.</p>
+      <p>Right now I’m practicing on class projects: scanning a network and writing up what I found, building a system with Django, and testing how rate limiting helps stop denial-of-service attacks.</p>
+      <p>I’m still a beginner, and I’m learning something new with every project.</p>
+    </div>
+    <dl class="facts rv" style="--d:.12s">
+      <dt>Interested in</dt><dd>Network security, penetration testing basics, secure web apps</dd>
+      <dt>Currently learning</dt><dd>Network enumeration, Nginx hardening, writing clear security reports</dd>
+      <dt>Goal</dt><dd>Become a cybersecurity professional</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="skills" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="rv">Languages and tools</h2>
+    <div class="skillgrid" id="sg"></div>
+    <p class="note rv">Levels are my honest self-assessment: “Learning” means I’m still building the basics, “Comfortable” means I use it without much help, and “Used in projects” means I’ve applied it in my class work.</p>
+  </div>
+</section>
+
+<section id="projects" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="rv">Projects</h2>
+    <div class="pgrid">
+
+      <article class="card rv">
+        <div class="shot" aria-hidden="true"><span class="p">$</span> nmap -sV 192.168.x.x<br><span class="dim">Starting scan…</span><br>80/tcp&nbsp; <span class="ok">open</span> http<br>53/tcp&nbsp; <span class="ok">open</span> domain</div>
+        <div class="body">
+          <span class="tag">Report</span>
+          <h3>Piso WiFi Network Enumeration</h3>
+          <p>A report on scanning and mapping a Piso WiFi network to find devices, open ports, and running services.</p>
+          <p><b>My contribution:</b> I ran the scans, recorded the findings, and wrote the report.</p>
+          <a class="btn" href="https://github.com/Gabyyy123/PisoWifi-Network-Enumaration" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </article>
+
+      <article class="card rv" style="--d:.1s">
+        <div class="shot" aria-hidden="true"><span class="p">$</span> ./verify-toolbox.sh<br><span class="ok">✔</span> nmap installed<br><span class="ok">✔</span> tools checked<br><span class="dim">All checks complete.</span></div>
+        <div class="body">
+          <span class="tag">Report</span>
+          <h3>Cybersecurity Toolbox Verification</h3>
+          <p>A report that checks the cybersecurity tools I use and confirms each one is installed and works as expected.</p>
+          <p><b>My contribution:</b> I tested each tool and documented the results.</p>
+          <a class="btn" href="https://github.com/Gabyyy123/Cybersecurity-Toolbox-Verification" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="shot" aria-hidden="true"><span class="p">python</span> manage.py runserver<br><span class="dim">Library Management</span><br>▸ Books &nbsp;▸ Members<br>▸ Borrow / Return</div>
+        <div class="body">
+          <span class="tag">System</span>
+          <h3>Library Management System</h3>
+          <p>A web app built with Django for managing books, members, and borrowing records.</p>
+          <p><b>My contribution:</b> I built the features and worked on the database and pages.</p>
+          <a class="btn" href="https://github.com/Gabyyy123/Library-Management-System---Django" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </article>
+
+      <article class="card rv" style="--d:.1s">
+        <div class="shot" aria-hidden="true"><span class="p">limit_req</span> zone=api burst=10;<br><span class="dim">Requests flooding in…</span><br>HTTP <span class="p">429</span> Too Many Requests<br><span class="ok">Server stays up</span></div>
+        <div class="body">
+          <span class="tag">Testing</span>
+          <h3>BayaniHub: DoS Attack Mitigation</h3>
+          <p>A test of how Nginx rate limiting helps protect a website from denial-of-service attacks.</p>
+          <p><b>My contribution:</b> I set up the rate limits, ran the attack tests, and wrote up the results.</p>
+          <a class="btn" href="https://github.com/Gabyyy123/BayaniHub-Mitigating-DoS-Attacks-using-Nginx-Rate-Limiting" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:0">
+  <div class="wrap">
+    <div class="contact rv">
+      <h2>Let’s talk</h2>
+      <p>I’m open to learning opportunities, internships, and conversations about cybersecurity. Send me an email, message me on Facebook, or take a look at my code on GitHub.</p>
+      <div class="btns">
+        <a class="btn pri" href="mailto:gabrillojhonloyd@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>Gmail</a>
+        <a class="btn" href="https://www.facebook.com/john.lloyd.gabrillo.2024" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.5 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.62 23.1 24 18.1 24 12.07z"/></svg>Facebook</a>
+        <a class="btn" href="https://github.com/Gabyyy123" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub</a>
+      </div>
+      <p class="mail">gabrillojhonloyd@gmail.com</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">© <span id="yr">2026</span> John Lloyd Gabrillo</div></footer>
+
+<script>
+document.documentElement.classList.add('js');
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* skills data: [short, name, level, hue] */
+var S=[["Fg","Figma","Learning",330],["C","C","Learning",210],["C++","C++","Learning",225],["Ar","Arduino","Used in class",175],
+["My","MySQL","Used in projects",200],["Nm","Nmap","Used in projects",140],[">_","Terminal commands","Comfortable",95],["</>","HTML","Comfortable",18],
+["{ }","CSS","Comfortable",215],["Dj","Django","Used in projects",150],["JS","JavaScript","Learning",48],["Gh","GitHub","Comfortable",265]];
+var g=document.getElementById('sg');
+S.forEach(function(s,i){
+  var d=document.createElement('div');d.className='sk rv';d.style.setProperty('--d',(i%4)*0.07+'s');
+  d.innerHTML='<span class="ic" style="--h:'+s[3]+'" aria-hidden="true"></span><span><b></b><small></small></span>';
+  d.querySelector('.ic').textContent=s[0];d.querySelector('b').textContent=s[1];d.querySelector('small').textContent=s[2];
+  g.appendChild(d);
+});
+
+/* scroll reveal */
+var els=document.querySelectorAll('.rv');
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.15});
+  els.forEach(function(el){io.observe(el)});
+}else{els.forEach(function(el){el.classList.add('in')})}
+
+/* progress bar + active link */
+var bar=document.getElementById('bar'),links=document.querySelectorAll('.links a'),secs=[].map.call(links,function(a){return document.querySelector(a.getAttribute('href'))});
+function onScroll(){
+  var h=document.documentElement,max=h.scrollHeight-h.clientHeight;
+  bar.style.transform='scaleX('+(max>0?h.scrollTop/max:0)+')';
+  var cur=0;secs.forEach(function(s,i){if(s.getBoundingClientRect().top<innerHeight*.4)cur=i});
+  links.forEach(function(a,i){a.classList.toggle('on',i===cur)});
+}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* theme toggle */
+document.getElementById('theme').addEventListener('click',function(){
+  var r=document.documentElement,dark=r.getAttribute('data-theme')?r.getAttribute('data-theme')==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  r.setAttribute('data-theme',dark?'light':'dark');
+});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* terminal typing */
+var lines=[
+ '<span class="p">$</span> whoami',
+ 'john-lloyd-gabrillo, cybersecurity student',
+ '<span class="p">$</span> nmap -sV --my-skills',
+ '<span class="dim">PORT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STATE SERVICE</span>',
+ '22/tcp&nbsp;&nbsp;<span class="ok">open</span>&nbsp;&nbsp;network-security',
+ '80/tcp&nbsp;&nbsp;<span class="ok">open</span>&nbsp;&nbsp;html-css-javascript',
+ '443/tcp <span class="ok">open</span>&nbsp;&nbsp;django-web-apps',
+ '3306/tcp <span class="ok">open</span> mysql',
+ '<span class="p">$</span> <span class="caret"></span>'
+];
+var tty=document.getElementById('tty');
+if(reduce){tty.innerHTML=lines.join('\n')}
+else{
+  var n=0;(function step(){
+    if(n>=lines.length)return;
+    tty.innerHTML=lines.slice(0,n+1).join('\n');n++;
+    setTimeout(step,n===3?650:420);
+  })();
+}
+</script>
+</body>
+</html>
